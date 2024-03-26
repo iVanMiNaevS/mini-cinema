@@ -1,24 +1,16 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from "./global.module.scss"
+import Search from './components/search/Search';
+import { useState } from "react";
+import { SearchFilm } from "./types/SearchFilm";
+import Films from "./components/films/Films";
 
 function App() {
+  const [films, setFilms] = useState<SearchFilm[] | undefined>([])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.container}>
+      <Search setFilms={setFilms}/>
+      <Films films={films}/>
     </div>
   );
 }

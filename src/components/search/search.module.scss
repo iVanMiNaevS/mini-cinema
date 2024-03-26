@@ -1,0 +1,28 @@
+@use "../../utils/variables" as v;
+
+.form {
+  width: 70%;
+  margin-top: 40px;
+}
+
+.search {
+  width: 100%;
+  padding: 20px 30px;
+  background-color: v.$color2Light;
+  color: v.$colorText;
+  font-size: 20px;
+  border-radius: 20px;
+  border: 2px solid v.$color2Light;
+  background-image: url("../../../public/imgs/pngwingcom.png");
+  background-repeat: no-repeat;
+  background-size: 40px;
+  background-position: 98% center;
+  &:focus {
+    outline: none;
+  }
+}
+@media (max-width: 500px) {
+  .form {
+    width: 100%;
+  }
+}
