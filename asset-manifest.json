@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/mini-cinema/static/css/main.30c8ead3.css",
+    "main.js": "/mini-cinema/static/js/main.a6d56614.js",
+    "static/media/pngwingcom.png": "/mini-cinema/static/media/pngwingcom.19ac51b972f0fca9735e.png",
+    "index.html": "/mini-cinema/index.html",
+    "main.30c8ead3.css.map": "/mini-cinema/static/css/main.30c8ead3.css.map",
+    "main.a6d56614.js.map": "/mini-cinema/static/js/main.a6d56614.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.30c8ead3.css",
+    "static/js/main.a6d56614.js"
+  ]
+}
