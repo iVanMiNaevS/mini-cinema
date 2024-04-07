@@ -9,13 +9,13 @@ interface ISearch{
 
 const Search:FC<ISearch>= ({setFilms}) =>{
 
-  const apiKey = "3e625b96"
+  
   const [value , setValue] = useState<string>("")
 
   return (
     <form method="get" className={styles.form} onSubmit={(e)=>{
       e.preventDefault();
-      FetchingSearchFilms(apiKey, value).then((films)=>setFilms(films))
+      FetchingSearchFilms( value).then((films)=>setFilms(films))
     }}>
       <input className={styles.search} placeholder={"Find Film"} onChange={(e)=>{
         setValue(e.target.value)
