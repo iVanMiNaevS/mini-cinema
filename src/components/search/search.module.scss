@@ -1,28 +1,29 @@
 @use "../../utils/variables" as v;
 
 .form {
-  width: 70%;
-  margin-top: 40px;
+	width: 70%;
+	margin-top: 40px;
+	margin-bottom: 40px;
 }
 
 .search {
-  width: 100%;
-  padding: 20px 30px;
-  background-color: v.$color2Light;
-  color: v.$colorText;
-  font-size: 20px;
-  border-radius: 20px;
-  border: 2px solid v.$color2Light;
-  background-image: url("../../../public/imgs/pngwingcom.png");
-  background-repeat: no-repeat;
-  background-size: 40px;
-  background-position: 98% center;
-  &:focus {
-    outline: none;
-  }
+	width: 100%;
+	padding: 20px 30px;
+	background-color: white;
+	color: v.$colorText;
+	font-size: 20px;
+	border-radius: 20px;
+	box-shadow: 0 0 15px v.$shadow;
+	background-image: url("../../imgs/search-icon2.png");
+	background-repeat: no-repeat;
+	background-size: 40px;
+	background-position: 98% center;
+	&:focus {
+		outline: none;
+	}
 }
 @media (max-width: 500px) {
-  .form {
-    width: 100%;
-  }
+	.form {
+		width: 100%;
+	}
 }

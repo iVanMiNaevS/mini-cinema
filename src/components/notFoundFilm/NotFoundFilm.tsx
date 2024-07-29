@@ -1,7 +1,5 @@
-import React, { FC } from 'react'
+import React, {FC} from "react";
 
-export const NotFoundFilm:FC = () => {
-  return (
-    <h1>NotFoundFilm</h1>
-  )
-}
+export const NotFoundFilm: FC = () => {
+	return <h1>NotFoundFilm</h1>;
+};

@@ -1,0 +1,44 @@
+@use "../../utils/variables" as v;
+header {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 70px;
+	padding: 0px 100px;
+	.header__icon {
+		width: 48px;
+		object-fit: cover;
+		cursor: pointer;
+	}
+	.active-header-link {
+		font-weight: bold;
+		border-bottom: 3px solid v.$color3;
+	}
+	ul {
+		display: flex;
+		gap: 80px;
+		li {
+			cursor: pointer;
+			height: 100%;
+			a {
+				border-bottom: 3px solid transparent;
+				transition: 0.2s ease;
+				font-size: 24px;
+				color: black;
+				font-weight: 400;
+				text-transform: uppercase;
+			}
+			a:hover {
+				font-weight: bold;
+			}
+		}
+	}
+	.profile {
+		cursor: pointer;
+		width: 48px;
+		height: 48px;
+		background: #000;
+		border-radius: 100%;
+	}
+}
