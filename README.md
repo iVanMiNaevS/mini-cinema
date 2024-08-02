@@ -1,1 +1,2 @@
-I made this project for typescript training
+Main ветка - старый проект;
+upgradeApp ветка - улучшенный старый проект с новым фронтом и функционал с обращением к серверу
