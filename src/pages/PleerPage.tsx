@@ -9,8 +9,8 @@ export const PleerPage = () => {
 		sc.src = "https://kinobox.tv/kinobox.min.js";
 		document.body.appendChild(sc);
 		const sc2 = document.createElement("script");
-		sc2.innerText = `kbox(".kinobox_player", {search: {imdb: "${params.id}"}});`;
 		setTimeout(() => {
+			sc2.innerText = `kbox(".kinobox_player", {search: {imdb: "${params.id}"}});`;
 			document.body.appendChild(sc2);
 		}, 100);
 

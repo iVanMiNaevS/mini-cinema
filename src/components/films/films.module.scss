@@ -73,13 +73,26 @@
 			// max-height: 0;
 			// opacity: 0;
 		}
-		& a {
-			background: v.$color3;
-			color: v.$color1;
-			padding: 10px 30px;
-			border-radius: 5px;
-			cursor: pointer;
-			font-size: medium;
+		.buttons {
+			display: flex;
+			justify-content: space-between;
+			button {
+				background: v.$color3;
+				color: white;
+				border-radius: 100%;
+				width: 36px;
+				height: 36;
+				font-size: large;
+				cursor: pointer;
+			}
+			a {
+				background: v.$color3;
+				color: v.$color1;
+				padding: 10px 30px;
+				border-radius: 5px;
+				cursor: pointer;
+				font-size: medium;
+			}
 		}
 	}
 }

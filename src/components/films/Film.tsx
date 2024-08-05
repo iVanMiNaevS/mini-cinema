@@ -2,9 +2,11 @@ import React, {FC} from "react";
 import styles from "./films.module.scss";
 import {SearchFilm} from "../../types/SearchFilm";
 import {Link} from "react-router-dom";
-// import {useInView} from "react-intersection-observer";
+import {useNavigate} from "react-router-dom";
 
 const Film: FC<{film: SearchFilm}> = ({film}) => {
+	const navigate = useNavigate();
+	let isAuth = false;
 	return (
 		<div className={styles.card}>
 			<img src={film.Poster} alt="poster" />
@@ -15,8 +17,18 @@ const Film: FC<{film: SearchFilm}> = ({film}) => {
 				</div>
 
 				<h6>{film.Title}</h6>
-				<Link to={`/pleer/${film.imdbID}`}>Watch</Link>
-				<button>+</button>
+				<div className={styles.buttons}>
+					<Link to={`/pleer/${film.imdbID}`}>Watch</Link>
+					<button
+						onClick={() => {
+							if (!isAuth) {
+								navigate("/login");
+							}
+						}}
+					>
+						+
+					</button>
+				</div>
 			</div>
 		</div>
 	);

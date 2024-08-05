@@ -29,8 +29,8 @@ const Films: FC<{films: SearchFilm[] | undefined}> = ({films}) => {
 			<Swiper
 				spaceBetween={64}
 				slidesPerView={viewSlides}
-				onSlideChange={() => console.log("slide change")}
-				onSwiper={(swiper: any) => console.log(swiper)}
+				onSlideChange={() => console.log()}
+				onSwiper={(swiper: any) => console.log()}
 				className={styles.swiper}
 			>
 				{films?.map((film) => {
