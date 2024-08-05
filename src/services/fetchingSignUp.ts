@@ -1,19 +1,20 @@
 import axios from "axios";
 
-type data = {
+export type data = {
 	password: string;
 	username: string;
 };
 
-export async function fetchSignUp(url: string, username: string, password: string) {
+export async function fetchSignUp(url: string, data: data) {
 	try {
-		// console.log(data);
 		const res = await axios.post(url, {
-			username,
-			password,
+			...data,
 		});
+
 		return res;
 	} catch (err) {
-		console.log(err);
+		if (axios.isAxiosError(err) && err.response) {
+			throw err.response.data;
+		}
 	}
 }

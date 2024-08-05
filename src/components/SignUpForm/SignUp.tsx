@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form";
 import {useLocation, Link} from "react-router-dom";
 import "./SignUp.scss";
 import {fetchSignUp} from "../../services/fetchingSignUp";
+import {useNavigate} from "react-router-dom";
+
 export const SignUp: FC = () => {
 	const location = useLocation();
 	const path = location.pathname;
@@ -13,14 +15,19 @@ export const SignUp: FC = () => {
 	} = useForm();
 
 	const [openPass, setOpenPass] = useState(false);
-
+	const [errorSignUp, setErrorSignUp] = useState("");
+	const navigate = useNavigate();
 	return (
 		<form
 			className="form"
 			onSubmit={handleSubmit((data) => {
-				fetchSignUp("http://localhost:5000/sign-up", data.username, data.password).then((res) =>
-					console.log(res)
-				);
+				const obj = {
+					username: data.username,
+					password: data.password,
+				};
+				fetchSignUp("http://localhost:5000/sign-up", obj)
+					.then(() => navigate("/login"))
+					.catch((err) => setErrorSignUp(err));
 			})}
 		>
 			<div className="title">
@@ -31,6 +38,7 @@ export const SignUp: FC = () => {
 					Sign Up
 				</Link>
 			</div>
+			{errorSignUp && <p style={{textTransform: "uppercase"}}>{errorSignUp}</p>}
 			<input placeholder="Username" {...register("username", {required: true})} />
 			{errors.username && <p>Username is required.</p>}
 			<span className="passwordWrapper">
@@ -38,7 +46,7 @@ export const SignUp: FC = () => {
 					className="passwordInput"
 					placeholder="Password"
 					type={openPass ? "text" : "password"}
-					{...register("password", {required: true})}
+					{...register("password", {required: true, minLength: 5})}
 				/>
 				<img
 					onClick={(e: React.MouseEvent<HTMLImageElement>) => {
@@ -56,7 +64,10 @@ export const SignUp: FC = () => {
 					alt="eye"
 				/>
 			</span>
-			{errors.password && <p>Password is required.</p>}
+			{errors.password && errors.password.type === "minLength" && (
+				<p>The password must be more than five characters long</p>
+			)}
+			{errors.password && errors.password.type === "required" && <p>Password is required</p>}
 
 			<input type="submit" />
 		</form>
