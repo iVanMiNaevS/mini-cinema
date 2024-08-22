@@ -42,4 +42,22 @@
 		width: 100%;
 		color: white;
 	}
+	.warning-access {
+		background: green;
+		position: fixed;
+		bottom: 30px;
+		right: 30px;
+		color: white;
+		padding: 20px 40px;
+		border-radius: 10px;
+		animation: hide 5s 3s ease;
+	}
+	@keyframes hide {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
 }

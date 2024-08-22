@@ -2,7 +2,7 @@ import React, {FC, useState} from "react";
 import {useForm} from "react-hook-form";
 import {useLocation, Link} from "react-router-dom";
 import "./SignUp.scss";
-import {fetchSignUp} from "../../services/fetchingSignUp";
+import {fetchSignUp} from "../../services/Auth";
 import {useNavigate} from "react-router-dom";
 
 export const SignUp: FC = () => {
@@ -26,7 +26,10 @@ export const SignUp: FC = () => {
 					password: data.password,
 				};
 				fetchSignUp("http://localhost:5000/sign-up", obj)
-					.then(() => navigate("/login"))
+					.then(() => {
+						navigate("/login");
+						setErrorSignUp("suc");
+					})
 					.catch((err) => setErrorSignUp(err));
 			})}
 		>

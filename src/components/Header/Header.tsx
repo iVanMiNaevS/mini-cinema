@@ -1,12 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import "./header.scss";
 import {Link, useLocation} from "react-router-dom";
+import {getAvatar} from "../../services/getAvatar";
 export const Header = () => {
 	const location = useLocation();
 	const path = location.pathname;
+	const [avatar, setAvatar] = useState("");
 	return (
 		<header>
 			<img className="header__icon" src={require("../../imgs/logo3.png")} alt="logo"></img>
+			<button
+				onClick={async () => {
+					setAvatar(await getAvatar());
+				}}
+			>
+				click
+			</button>
 			<nav>
 				<ul>
 					<li>
@@ -26,7 +35,15 @@ export const Header = () => {
 					</li>
 				</ul>
 			</nav>
-			<div className="profile"></div>
+			<img
+				src={
+					avatar
+						? avatar
+						: "https://avatars.mds.yandex.net/i?id=6e5c7cee90f789b4833b492da50ef143a2d6e0f7-12475925-images-thumbs&n=13"
+				}
+				alt="avatar"
+				className="profile"
+			></img>
 		</header>
 	);
 };

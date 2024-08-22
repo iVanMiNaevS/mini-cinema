@@ -2,6 +2,11 @@ import React, {FC, useState} from "react";
 import {useForm} from "react-hook-form";
 import {useLocation, Link} from "react-router-dom";
 import "./loginForm.scss";
+import {useNavigate} from "react-router-dom";
+import {fetchLogin} from "../../services/Auth";
+import {getAvatar} from "../../services/getAvatar";
+import {useDispatch} from "react-redux";
+import {changeAuth} from "../../store/slices/AuthSlice";
 export const Login: FC = () => {
 	const location = useLocation();
 	const path = location.pathname;
@@ -10,11 +15,29 @@ export const Login: FC = () => {
 		handleSubmit,
 		formState: {errors},
 	} = useForm();
-
+	const dispatch = useDispatch();
 	const [openPass, setOpenPass] = useState(false);
-
+	const [errorLogin, setErrorLogin] = useState("");
+	const navigate = useNavigate();
 	return (
-		<form className="form" onSubmit={handleSubmit((data) => console.log(data))}>
+		<form
+			className="form"
+			onSubmit={handleSubmit((data) => {
+				const obj = {
+					username: data.username,
+					password: data.password,
+				};
+				fetchLogin("http://localhost:5000/login", obj)
+					.then(async (res) => {
+						console.log(res);
+						navigate("/");
+						localStorage.setItem("token", res?.data);
+						dispatch(changeAuth());
+						await getAvatar();
+					})
+					.catch((err) => setErrorLogin(err));
+			})}
+		>
 			<div className="title">
 				<Link className={path === "/login" ? "active-link" : ""} to={"/login"}>
 					Login
@@ -49,7 +72,7 @@ export const Login: FC = () => {
 				/>
 			</span>
 			{errors.password && <p>Password is required.</p>}
-
+			{errorLogin && <p>{errorLogin}</p>}
 			<input type="submit" />
 		</form>
 	);

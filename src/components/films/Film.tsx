@@ -3,10 +3,13 @@ import styles from "./films.module.scss";
 import {SearchFilm} from "../../types/SearchFilm";
 import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import {IRootState} from "../../store/store";
+import {addFilmInMyList} from "../../services/addFilmInMyList";
 
 const Film: FC<{film: SearchFilm}> = ({film}) => {
 	const navigate = useNavigate();
-	let isAuth = false;
+	const isAuth = useSelector<IRootState>((store) => store.Auth);
 	return (
 		<div className={styles.card}>
 			<img src={film.Poster} alt="poster" />
@@ -20,9 +23,11 @@ const Film: FC<{film: SearchFilm}> = ({film}) => {
 				<div className={styles.buttons}>
 					<Link to={`/pleer/${film.imdbID}`}>Watch</Link>
 					<button
-						onClick={() => {
+						onClick={async () => {
 							if (!isAuth) {
 								navigate("/login");
+							} else {
+								console.log(await addFilmInMyList(film));
 							}
 						}}
 					>
