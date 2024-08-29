@@ -2,11 +2,13 @@
 header {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 	height: 70px;
 	padding: 0px 100px;
+	position: relative;
 	.header__icon {
+		position: absolute;
+		left: 100px;
 		width: 48px;
 		object-fit: cover;
 		cursor: pointer;
@@ -14,6 +16,9 @@ header {
 	.active-header-link {
 		font-weight: bold;
 		border-bottom: 3px solid v.$color3;
+	}
+	nav {
+		margin: 0 auto;
 	}
 	ul {
 		display: flex;
@@ -34,10 +39,26 @@ header {
 			}
 		}
 	}
-	.profile {
-		cursor: pointer;
-		width: 48px;
-		height: 48px;
-		border-radius: 100%;
+	.profile__wrapper {
+		position: absolute;
+		display: flex;
+		right: 100px;
+		align-items: center;
+		.profile {
+			cursor: pointer;
+			width: 48px;
+			height: 48px;
+			border-radius: 100%;
+		}
+		.header__btn {
+			margin-right: 10px;
+			background: v.$color3;
+			color: v.$color1;
+			padding: 10px 30px;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: medium;
+			height: fit-content;
+		}
 	}
 }

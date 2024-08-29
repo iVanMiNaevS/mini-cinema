@@ -9,6 +9,13 @@ export const FetchingSearchFilms = async (
 	const response = await axios.get<{Search: SearchFilm[]}>(
 		`https://www.omdbapi.com/?apikey=${apiKey}&s=${searchValue}&type=${type}`
 	);
-	console.log(response.data.Search);
 	return response.data.Search;
+};
+
+export const FetchingListFilm = async (): Promise<SearchFilm[]> => {
+	const token = localStorage.getItem("token");
+	const response = await axios.get(`http://localhost:5000/list-film`, {
+		headers: {Authorization: `Bearer ${token}`},
+	});
+	return response.data;
 };

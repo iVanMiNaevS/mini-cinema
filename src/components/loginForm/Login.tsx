@@ -4,9 +4,9 @@ import {useLocation, Link} from "react-router-dom";
 import "./loginForm.scss";
 import {useNavigate} from "react-router-dom";
 import {fetchLogin} from "../../services/Auth";
-import {getAvatar} from "../../services/getAvatar";
 import {useDispatch} from "react-redux";
 import {changeAuth} from "../../store/slices/AuthSlice";
+
 export const Login: FC = () => {
 	const location = useLocation();
 	const path = location.pathname;
@@ -31,9 +31,8 @@ export const Login: FC = () => {
 					.then(async (res) => {
 						console.log(res);
 						navigate("/");
-						localStorage.setItem("token", res?.data);
+						localStorage.setItem("token", res?.data.tokenAccess);
 						dispatch(changeAuth());
-						await getAvatar();
 					})
 					.catch((err) => setErrorLogin(err));
 			})}

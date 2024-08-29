@@ -1,6 +1,6 @@
 import React, {FC, useState, Dispatch, SetStateAction} from "react";
 import {SearchFilm} from "../../types/SearchFilm";
-import {FetchingSearchFilms} from "../../services/fetchingSearchFilms";
+import {FetchingSearchFilms} from "../../services/fetchData";
 import styles from "./search.module.scss";
 
 interface ISearch {

@@ -1,21 +1,31 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./header.scss";
 import {Link, useLocation} from "react-router-dom";
 import {getAvatar} from "../../services/getAvatar";
+import {useDispatch, useSelector} from "react-redux";
+import {IRootState} from "../../store/store";
+import {changeAuth} from "../../store/slices/AuthSlice";
 export const Header = () => {
 	const location = useLocation();
 	const path = location.pathname;
 	const [avatar, setAvatar] = useState("");
+	const dispatch = useDispatch();
+	const isAuth = useSelector<IRootState>((store) => store.Auth);
+	useEffect(() => {
+		if (isAuth) {
+			getAvatar()
+				.then((data) => setAvatar(data))
+				.catch((e) => console.log(e));
+		} else {
+			setAvatar(
+				"https://avatars.mds.yandex.net/i?id=6e5c7cee90f789b4833b492da50ef143a2d6e0f7-12475925-images-thumbs&n=13"
+			);
+		}
+	}, [isAuth]);
+
 	return (
 		<header>
 			<img className="header__icon" src={require("../../imgs/logo3.png")} alt="logo"></img>
-			<button
-				onClick={async () => {
-					setAvatar(await getAvatar());
-				}}
-			>
-				click
-			</button>
 			<nav>
 				<ul>
 					<li>
@@ -35,15 +45,29 @@ export const Header = () => {
 					</li>
 				</ul>
 			</nav>
-			<img
-				src={
-					avatar
-						? avatar
-						: "https://avatars.mds.yandex.net/i?id=6e5c7cee90f789b4833b492da50ef143a2d6e0f7-12475925-images-thumbs&n=13"
-				}
-				alt="avatar"
-				className="profile"
-			></img>
+			<div className="profile__wrapper">
+				{isAuth ? (
+					<button
+						className="header__btn"
+						onClick={() => {
+							dispatch(changeAuth(false));
+							localStorage.removeItem("token");
+						}}
+					>
+						LogOut
+					</button>
+				) : (
+					<>
+						<Link className="header__btn" to={"/sign-up"}>
+							SignUp
+						</Link>
+						<Link className="header__btn" to={"/login"}>
+							Login
+						</Link>
+					</>
+				)}
+				<img src={avatar} alt="avatar" className="profile"></img>
+			</div>
 		</header>
 	);
 };
