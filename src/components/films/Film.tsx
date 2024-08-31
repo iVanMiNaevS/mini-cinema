@@ -9,7 +9,7 @@ import {addFilmInMyList} from "../../services/addFilmInMyList";
 
 const Film: FC<{film: SearchFilm}> = ({film}) => {
 	const navigate = useNavigate();
-	const isAuth = useSelector<IRootState>((store) => store.Auth);
+	const isAuth = useSelector<IRootState>((store) => store.AuthSlice.Auth);
 	return (
 		<div className={styles.card}>
 			<img src={film.Poster} alt="poster" />

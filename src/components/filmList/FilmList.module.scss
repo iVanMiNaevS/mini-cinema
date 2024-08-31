@@ -1,35 +1,22 @@
 @use "../../utils/variables" as v;
-// .containerFilms {
-// margin-top: 30px;
-// margin-bottom: 30px;
-// max-width: 1500px;
-// display: grid;
-// grid-template-columns: repeat(4, minmax(100px, 300px));
-// gap: 50px;
-// justify-content: space-between;
-.card.notView {
-	transform: translateX(-100%);
-	opacity: 0;
-}
-.swiper {
-	max-width: 1600px;
+
+.list {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-auto-rows: 650px;
+	gap: 30px;
 	width: 100%;
-	height: 700px;
-	border-radius: 30px;
-	padding: 20px 20px !important;
-}
-.swiperItem {
-	height: 100%;
-	width: 100%;
-	border-radius: 30px;
-	box-shadow: 0 0 20px v.$shadow;
+	margin-top: 50px;
 }
 .card {
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 	transition: 0.5s;
 	opacity: 1;
 	position: relative;
 	width: 100%;
 	height: 100%;
+	box-shadow: 0 0 20px v.$shadow;
 	cursor: pointer;
 	display: flex;
 	flex-direction: column;
@@ -93,19 +80,23 @@
 				cursor: pointer;
 				font-size: medium;
 			}
-		}
-	}
-}
-// }
-@media (max-width: 768px) {
-}
-@media (max-width: 500px) {
-	.description {
-		& p {
-			font-size: 13px !important;
-		}
-		& h6 {
-			font-size: 17px !important;
+			.buttonFunc {
+				display: flex;
+				gap: 10px;
+				height: 36px;
+				button:not(:last-child) {
+					background: white;
+					color: white;
+					border-radius: 100%;
+					width: 36px;
+					height: 36px;
+					font-size: large;
+					cursor: pointer;
+				}
+				img {
+					height: 100%;
+				}
+			}
 		}
 	}
 }

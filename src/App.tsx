@@ -8,8 +8,8 @@ import {SignUpPage} from "./pages/SignUpPage";
 import {LoginPage} from "./pages/LoginPage";
 import {useEffect} from "react";
 import {changeAuth} from "./store/slices/AuthSlice";
-import {useDispatch} from "react-redux";
-
+import {useDispatch, useSelector} from "react-redux";
+import {IRootState} from "./store/store";
 function App() {
 	const dispatch = useDispatch();
 	useEffect(() => {
@@ -19,11 +19,11 @@ function App() {
 		} else {
 			const {exp} = JSON.parse(window.atob(token.split(".")[1]));
 
-			if (Date.now() <= exp * 1000) {
+			if (Date.now() + 1000 <= exp * 1000) {
 				dispatch(changeAuth(true));
 			} else {
-				localStorage.removeItem("token");
 				dispatch(changeAuth(false));
+				localStorage.removeItem("token");
 			}
 		}
 	}, []);

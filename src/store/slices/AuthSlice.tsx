@@ -5,12 +5,12 @@ const AuthSlice = createSlice({
 	name: "Auth",
 	initialState: {Auth: false},
 	reducers: {
-		changeAuth(state, actions: PayloadAction<boolean | undefined>) {
-			if (actions.payload) {
-				state.Auth = actions.payload;
-			} else {
-				state.Auth = !state.Auth;
-			}
+		changeAuth(state, actions: PayloadAction<boolean>) {
+			// if (actions.payload) {
+			state.Auth = actions.payload;
+			// } else {
+			// 	state.Auth = !state.Auth;
+			// }
 		},
 	},
 });

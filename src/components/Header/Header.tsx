@@ -10,7 +10,7 @@ export const Header = () => {
 	const path = location.pathname;
 	const [avatar, setAvatar] = useState("");
 	const dispatch = useDispatch();
-	const isAuth = useSelector<IRootState>((store) => store.Auth);
+	const isAuth = useSelector<IRootState>((store) => store.AuthSlice.Auth);
 	useEffect(() => {
 		if (isAuth) {
 			getAvatar()

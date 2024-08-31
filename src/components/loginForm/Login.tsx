@@ -32,7 +32,7 @@ export const Login: FC = () => {
 						console.log(res);
 						navigate("/");
 						localStorage.setItem("token", res?.data.tokenAccess);
-						dispatch(changeAuth());
+						dispatch(changeAuth(true));
 					})
 					.catch((err) => setErrorLogin(err));
 			})}
