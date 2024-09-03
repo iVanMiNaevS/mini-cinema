@@ -5,24 +5,13 @@ import {getAvatar} from "../../services/getAvatar";
 import {useDispatch, useSelector} from "react-redux";
 import {IRootState} from "../../store/store";
 import {changeAuth} from "../../store/slices/AuthSlice";
+import {removeAllData} from "../../store/slices/UserSlice";
 export const Header = () => {
 	const location = useLocation();
 	const path = location.pathname;
-	const [avatar, setAvatar] = useState("");
+	const {avatar, listFilm} = useSelector((store: IRootState) => store.UserSlice);
 	const dispatch = useDispatch();
-	const isAuth = useSelector<IRootState>((store) => store.AuthSlice.Auth);
-	useEffect(() => {
-		if (isAuth) {
-			getAvatar()
-				.then((data) => setAvatar(data))
-				.catch((e) => console.log(e));
-		} else {
-			setAvatar(
-				"https://avatars.mds.yandex.net/i?id=6e5c7cee90f789b4833b492da50ef143a2d6e0f7-12475925-images-thumbs&n=13"
-			);
-		}
-	}, [isAuth]);
-
+	const isAuth = useSelector((store: IRootState) => store.AuthSlice.Auth);
 	return (
 		<header>
 			<img className="header__icon" src={require("../../imgs/logo3.png")} alt="logo"></img>
@@ -39,6 +28,7 @@ export const Header = () => {
 						</Link>
 					</li>
 					<li>
+						{listFilm.length !== 0 && <div className="countFilms">{listFilm.length}</div>}
 						<Link to={"my-list"} className={path === "/my-list" ? "active-header-link" : ""}>
 							my list
 						</Link>
@@ -50,8 +40,9 @@ export const Header = () => {
 					<button
 						className="header__btn"
 						onClick={() => {
+							dispatch(removeAllData());
 							dispatch(changeAuth(false));
-							localStorage.removeItem("token");
+							localStorage.clear();
 						}}
 					>
 						LogOut
@@ -66,7 +57,11 @@ export const Header = () => {
 						</Link>
 					</>
 				)}
-				<img src={avatar} alt="avatar" className="profile"></img>
+				<img
+					src={avatar !== "" ? avatar : require("../../imgs/no-profile-min.png")}
+					alt="avatar"
+					className="profile"
+				></img>
 			</div>
 		</header>
 	);

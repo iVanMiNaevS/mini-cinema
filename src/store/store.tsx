@@ -11,14 +11,17 @@ import {
 	REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+import UserSlice from "./slices/UserSlice";
 
 const persistConfig = {
 	key: "root",
 	storage,
+	blacklist: ["UserSlice"],
 };
 
 const rootReducer = combineReducers({
 	AuthSlice,
+	UserSlice,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

@@ -12,6 +12,6 @@ export async function addFilmInMyList(film: SearchFilm) {
 		);
 		return response.data;
 	} catch (err) {
-		console.log(err);
+		throw err;
 	}
 }

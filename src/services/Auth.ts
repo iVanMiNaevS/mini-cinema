@@ -29,6 +29,8 @@ export async function fetchLogin(url: string, data: data) {
 	} catch (err) {
 		if (axios.isAxiosError(err) && err.response) {
 			throw err.response.data;
+		} else {
+			throw err;
 		}
 	}
 }

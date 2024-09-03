@@ -6,6 +6,8 @@ import {useNavigate} from "react-router-dom";
 import {fetchLogin} from "../../services/Auth";
 import {useDispatch} from "react-redux";
 import {changeAuth} from "../../store/slices/AuthSlice";
+import {getDataUser} from "../../store/slices/UserSlice";
+import {ThunkDispatch} from "@reduxjs/toolkit";
 
 export const Login: FC = () => {
 	const location = useLocation();
@@ -16,6 +18,7 @@ export const Login: FC = () => {
 		formState: {errors},
 	} = useForm();
 	const dispatch = useDispatch();
+	const dispatchThunk = useDispatch<ThunkDispatch<any, any, any>>();
 	const [openPass, setOpenPass] = useState(false);
 	const [errorLogin, setErrorLogin] = useState("");
 	const navigate = useNavigate();
@@ -28,13 +31,20 @@ export const Login: FC = () => {
 					password: data.password,
 				};
 				fetchLogin("http://localhost:5000/login", obj)
-					.then(async (res) => {
+					.then((res) => {
 						console.log(res);
 						navigate("/");
 						localStorage.setItem("token", res?.data.tokenAccess);
+						dispatchThunk(getDataUser());
 						dispatch(changeAuth(true));
 					})
-					.catch((err) => setErrorLogin(err));
+					.catch((err) => {
+						if (err.message === "Network Error") {
+							setErrorLogin(err.message);
+						} else {
+							setErrorLogin(err);
+						}
+					});
 			})}
 		>
 			<div className="title">

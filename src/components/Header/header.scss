@@ -24,8 +24,24 @@ header {
 		display: flex;
 		gap: 80px;
 		li {
+			position: relative;
 			cursor: pointer;
 			height: 100%;
+			.countFilms {
+				position: absolute;
+				border-radius: 100%;
+				background: v.$color3;
+				color: white;
+				width: 20px;
+				height: 20px;
+				font-size: medium;
+				right: -17px;
+				top: -15px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 12px;
+			}
 			a {
 				border-bottom: 3px solid transparent;
 				transition: 0.2s ease;

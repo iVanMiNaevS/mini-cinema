@@ -20,11 +20,11 @@ export const MyList = () => {
 				.then((data) => {
 					setLoading(false);
 					setList(data);
+					localStorage.setItem("countFilm", String(data.length));
 				})
 				.catch((e) => console.log(e));
 		}
 	}, [isAuth]);
-	console.log(list);
 	return (
 		<div className={styles.container}>
 			{}
