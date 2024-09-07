@@ -1,5 +1,5 @@
 import axios from "axios";
-import {SearchFilm} from "../types/SearchFilm";
+import {FilmFromDB, SearchFilm} from "../types/SearchFilm";
 
 export const FetchingSearchFilms = async (
 	searchValue: string,
@@ -12,10 +12,4 @@ export const FetchingSearchFilms = async (
 	return response.data.Search;
 };
 
-export const FetchingListFilm = async (): Promise<SearchFilm[]> => {
-	const token = localStorage.getItem("token");
-	const response = await axios.get(`http://localhost:5000/list-film`, {
-		headers: {Authorization: `Bearer ${token}`},
-	});
-	return response.data;
-};
+

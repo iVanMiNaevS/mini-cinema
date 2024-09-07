@@ -1,37 +1,29 @@
-import React, {useEffect, useState} from "react";
-import {FetchingListFilm} from "../services/fetchData";
-import {SearchFilm} from "../types/SearchFilm";
-import {useSelector} from "react-redux";
-import {IRootState} from "../store/store";
-import {useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { IRootState } from "../store/store";
+import { useNavigate } from "react-router-dom";
 import styles from "../global.module.scss";
-import {FilmList} from "../components/filmList/FilmList";
+import { FilmList } from "../components/filmList/FilmList";
 
 export const MyList = () => {
-	const isAuth = useSelector<IRootState>((store) => store.AuthSlice.Auth);
-	const [list, setList] = useState<SearchFilm[]>([]);
-	const [loading, setLoading] = useState(true);
+	const isAuth = useSelector((store: IRootState) => store.AuthSlice.Auth);
+	const { listFilm, status } = useSelector(
+		(store: IRootState) => store.UserSlice
+	);
 	const navigate = useNavigate();
 	useEffect(() => {
 		if (!isAuth) {
 			navigate("/login");
-		} else {
-			FetchingListFilm()
-				.then((data) => {
-					setLoading(false);
-					setList(data);
-					localStorage.setItem("countFilm", String(data.length));
-				})
-				.catch((e) => console.log(e));
 		}
 	}, [isAuth]);
 	return (
 		<div className={styles.container}>
-			{}
-			{loading === true ? (
-				<h1>Loading...</h1>
-			) : list.length > 0 ? (
-				<FilmList films={list} />
+			{isAuth && listFilm.length > 0 ? (
+				status === "loading" ? (
+					<h1>Loading</h1>
+				) : (
+					<FilmList films={listFilm} />
+				)
 			) : (
 				<h1>У вас пока нет фильмов в списке</h1>
 			)}

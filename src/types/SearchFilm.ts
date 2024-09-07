@@ -5,3 +5,7 @@ export interface SearchFilm {
   Type: string;
   Poster: string;
 }
+
+export interface FilmFromDB extends SearchFilm{
+  watched: boolean
+}

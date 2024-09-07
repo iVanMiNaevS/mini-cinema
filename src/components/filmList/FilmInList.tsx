@@ -1,8 +1,12 @@
-import React, {FC} from "react";
-import {SearchFilm} from "../../types/SearchFilm";
-import {Link} from "react-router-dom";
+import React, { FC } from "react";
+import { SearchFilm } from "../../types/SearchFilm";
+import { Link } from "react-router-dom";
 import styles from "./FilmList.module.scss";
-export const FilmInList: FC<{film: SearchFilm}> = ({film}) => {
+import { useDispatch } from "react-redux";
+import { deleteFilmFromMyList } from "../../store/slices/UserSlice";
+import { ThunkDispatch } from "@reduxjs/toolkit";
+export const FilmInList: FC<{ film: SearchFilm }> = ({ film }) => {
+	const dispatchThunk = useDispatch<ThunkDispatch<any, any, any>>();
 	return (
 		<div className={styles.card}>
 			<img src={film.Poster} alt="poster" />
@@ -19,8 +23,12 @@ export const FilmInList: FC<{film: SearchFilm}> = ({film}) => {
 						<button>
 							<img src={require("../../imgs/eye-close.png")} alt="eye" />
 						</button>
-						<button>
-							<img src={require("../../imgs/x-button.png")} alt="eye" />
+						<button
+							onClick={() => {
+								dispatchThunk(deleteFilmFromMyList(film));
+							}}
+						>
+							<img src={require("../../imgs/x-button.png")} alt="delete" />
 						</button>
 					</div>
 				</div>

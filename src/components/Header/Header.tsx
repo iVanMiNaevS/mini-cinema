@@ -1,20 +1,25 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./header.scss";
-import {Link, useLocation} from "react-router-dom";
-import {getAvatar} from "../../services/getAvatar";
-import {useDispatch, useSelector} from "react-redux";
-import {IRootState} from "../../store/store";
-import {changeAuth} from "../../store/slices/AuthSlice";
-import {removeAllData} from "../../store/slices/UserSlice";
+import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "../../store/store";
+import { changeAuth } from "../../store/slices/AuthSlice";
+import { removeAllData } from "../../store/slices/UserSlice";
 export const Header = () => {
 	const location = useLocation();
 	const path = location.pathname;
-	const {avatar, listFilm} = useSelector((store: IRootState) => store.UserSlice);
+	const { avatar, listFilm } = useSelector(
+		(store: IRootState) => store.UserSlice
+	);
 	const dispatch = useDispatch();
 	const isAuth = useSelector((store: IRootState) => store.AuthSlice.Auth);
 	return (
 		<header>
-			<img className="header__icon" src={require("../../imgs/logo3.png")} alt="logo"></img>
+			<img
+				className="header__icon"
+				src={require("../../imgs/logo3.png")}
+				alt="logo"
+			></img>
 			<nav>
 				<ul>
 					<li>
@@ -23,13 +28,21 @@ export const Header = () => {
 						</Link>
 					</li>
 					<li>
-						<Link to={"serials"} className={path === "/serials" ? "active-header-link" : ""}>
+						<Link
+							to={"serials"}
+							className={path === "/serials" ? "active-header-link" : ""}
+						>
 							serials
 						</Link>
 					</li>
 					<li>
-						{listFilm.length !== 0 && <div className="countFilms">{listFilm.length}</div>}
-						<Link to={"my-list"} className={path === "/my-list" ? "active-header-link" : ""}>
+						{listFilm.length !== 0 && (
+							<div className="countFilms">{listFilm.length}</div>
+						)}
+						<Link
+							to={"my-list"}
+							className={path === "/my-list" ? "active-header-link" : ""}
+						>
 							my list
 						</Link>
 					</li>
@@ -58,7 +71,9 @@ export const Header = () => {
 					</>
 				)}
 				<img
-					src={avatar !== "" ? avatar : require("../../imgs/no-profile-min.png")}
+					src={
+						avatar !== "" ? avatar : require("../../imgs/no-profile-min.png")
+					}
 					alt="avatar"
 					className="profile"
 				></img>

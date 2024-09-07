@@ -1,8 +1,8 @@
-import React, {FC} from "react";
-import {SearchFilm} from "../../types/SearchFilm";
-import {FilmInList} from "./FilmInList";
+import React, { FC } from "react";
+import { FilmFromDB } from "../../types/SearchFilm";
+import { FilmInList } from "./FilmInList";
 import styles from "./FilmList.module.scss";
-export const FilmList: FC<{films: SearchFilm[]}> = ({films}) => {
+export const FilmList: FC<{ films: FilmFromDB[] }> = ({ films }) => {
 	return (
 		<div className={styles.list}>
 			{films.map((film) => {

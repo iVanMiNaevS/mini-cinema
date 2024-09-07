@@ -32,7 +32,6 @@ export const Login: FC = () => {
 				};
 				fetchLogin("http://localhost:5000/login", obj)
 					.then((res) => {
-						console.log(res);
 						navigate("/");
 						localStorage.setItem("token", res?.data.tokenAccess);
 						dispatchThunk(getDataUser());
