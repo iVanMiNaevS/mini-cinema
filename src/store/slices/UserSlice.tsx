@@ -69,6 +69,33 @@ export const deleteFilmFromMyList = createAsyncThunk(
 	}
 );
 
+type changeParams = {
+	film: SearchFilm;
+	watched: boolean;
+};
+
+export const changeWatchedFilm = createAsyncThunk(
+	"UserData/changeWatchedFilm",
+	async ({ film, watched }: changeParams, { rejectWithValue }) => {
+		const token = localStorage.getItem("token");
+		try {
+			const response = await axios.patch(
+				"http://localhost:5000/change-watched",
+				{ film, watched },
+				{
+					headers: { Authorization: `Bearer ${token}` },
+				}
+			);
+			return response.data;
+		} catch (err) {
+			console.log(err);
+			if (axios.isAxiosError(err) && err.response) {
+				return rejectWithValue(err.response?.data);
+			}
+		}
+	}
+);
+
 const UserDataSlice = createSlice({
 	name: "UserData",
 	initialState,
@@ -119,6 +146,21 @@ const UserDataSlice = createSlice({
 			}
 		);
 		builder.addCase(deleteFilmFromMyList.rejected, (state, action) => {
+			state.status = "rejected";
+			state.error = action.payload;
+		});
+		builder.addCase(changeWatchedFilm.pending, (state, action) => {
+			state.status = "loading";
+			state.error = "";
+		});
+		builder.addCase(
+			changeWatchedFilm.fulfilled,
+			(state, action: PayloadAction<{ listFilm: FilmFromDB[] }>) => {
+				state.status = "resolve";
+				state.listFilm = action.payload.listFilm;
+			}
+		);
+		builder.addCase(changeWatchedFilm.rejected, (state, action) => {
 			state.status = "rejected";
 			state.error = action.payload;
 		});

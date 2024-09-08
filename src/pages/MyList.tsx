@@ -18,14 +18,14 @@ export const MyList = () => {
 	}, [isAuth]);
 	return (
 		<div className={styles.container}>
-			{isAuth && listFilm.length > 0 ? (
-				status === "loading" ? (
-					<h1>Loading</h1>
-				) : (
+			{isAuth && status !== "loading" ? (
+				listFilm.length > 0 ? (
 					<FilmList films={listFilm} />
+				) : (
+					<h1>У вас пока нет фильмов в списке</h1>
 				)
 			) : (
-				<h1>У вас пока нет фильмов в списке</h1>
+				<h1>Loading</h1>
 			)}
 		</div>
 	);

@@ -1,11 +1,24 @@
-import React, { FC } from "react";
-import { SearchFilm } from "../../types/SearchFilm";
+import React, { FC, useEffect, useState } from "react";
+import { FilmFromDB, SearchFilm } from "../../types/SearchFilm";
 import { Link } from "react-router-dom";
 import styles from "./FilmList.module.scss";
-import { useDispatch } from "react-redux";
-import { deleteFilmFromMyList } from "../../store/slices/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { IRootState } from "../../store/store";
+import {
+	changeWatchedFilm,
+	deleteFilmFromMyList,
+} from "../../store/slices/UserSlice";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 export const FilmInList: FC<{ film: SearchFilm }> = ({ film }) => {
+	const listFilm = useSelector((store: IRootState) => store.UserSlice.listFilm);
+	const [currentFilm, setCurrentFilm] = useState<FilmFromDB>();
+	useEffect(() => {
+		listFilm.forEach((filmInlist) => {
+			if (film.imdbID === filmInlist.imdbID) {
+				setCurrentFilm(filmInlist);
+			}
+		});
+	}, []);
 	const dispatchThunk = useDispatch<ThunkDispatch<any, any, any>>();
 	return (
 		<div className={styles.card}>
@@ -20,8 +33,21 @@ export const FilmInList: FC<{ film: SearchFilm }> = ({ film }) => {
 				<div className={styles.buttons}>
 					<Link to={`/pleer/${film.imdbID}`}>Watch</Link>
 					<div className={styles.buttonFunc}>
-						<button>
-							<img src={require("../../imgs/eye-close.png")} alt="eye" />
+						<button
+							onClick={() => {
+								dispatchThunk(
+									changeWatchedFilm({ film, watched: !currentFilm?.watched })
+								);
+							}}
+						>
+							<img
+								src={
+									currentFilm?.watched
+										? require("../../imgs/eye-open.png")
+										: require("../../imgs/eye-close.png")
+								}
+								alt="eye"
+							/>
 						</button>
 						<button
 							onClick={() => {
