@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/mini-cinema/static/css/main.b2fd15c9.css",
-    "main.js": "/mini-cinema/static/js/main.7e4213a1.js",
+    "main.css": "/mini-cinema/static/css/main.f7f2aaa2.css",
+    "main.js": "/mini-cinema/static/js/main.95b0fc58.js",
     "static/media/eye-close.png": "/mini-cinema/static/media/eye-close.6f23d33ef3a95692d02c.png",
     "static/media/eye-open.png": "/mini-cinema/static/media/eye-open.e2d99441bdc6518b9e75.png",
     "static/media/no-profile-min.png": "/mini-cinema/static/media/no-profile-min.b5576598a43a634c0088.png",
     "static/media/x-button.png": "/mini-cinema/static/media/x-button.5cc943d27eb3ed685271.png",
     "static/media/search-icon2.png": "/mini-cinema/static/media/search-icon2.8237a90549c294ac69d7.png",
     "index.html": "/mini-cinema/index.html",
-    "main.b2fd15c9.css.map": "/mini-cinema/static/css/main.b2fd15c9.css.map",
-    "main.7e4213a1.js.map": "/mini-cinema/static/js/main.7e4213a1.js.map"
+    "main.f7f2aaa2.css.map": "/mini-cinema/static/css/main.f7f2aaa2.css.map",
+    "main.95b0fc58.js.map": "/mini-cinema/static/js/main.95b0fc58.js.map"
   },
   "entrypoints": [
-    "static/css/main.b2fd15c9.css",
-    "static/js/main.7e4213a1.js"
+    "static/css/main.f7f2aaa2.css",
+    "static/js/main.95b0fc58.js"
   ]
 }
