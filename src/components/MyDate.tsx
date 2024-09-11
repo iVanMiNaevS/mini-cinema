@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 
 export const MyDate = () => {
 	const [date, setDate] = useState(new Date());
@@ -18,6 +18,7 @@ export const MyDate = () => {
 		alignText: "center",
 		padding: "48px 0px 20px 0px",
 	};
+	useEffect(() => {}, [date]);
 	return (
 		<div style={style}>
 			{date.getMinutes() < 10

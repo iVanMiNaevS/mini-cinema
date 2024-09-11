@@ -49,6 +49,11 @@ body {
 }
 @media (max-width: 768px) {
 	.container {
-		padding: 0 100px;
+		padding: 0 50px;
+	}
+}
+@media (max-width: 470px) {
+	.container {
+		padding: 0 20px;
 	}
 }
