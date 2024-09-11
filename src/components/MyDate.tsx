@@ -3,12 +3,6 @@ import React, { useEffect, useState } from "react";
 export const MyDate = () => {
 	const [date, setDate] = useState(new Date());
 
-	setInterval(() => {
-		if (new Date().getSeconds() >= 59) {
-			setDate(new Date());
-		}
-	}, 1000);
-
 	const style = {
 		width: "fit-content",
 		margin: "0 auto",
@@ -18,7 +12,18 @@ export const MyDate = () => {
 		alignText: "center",
 		padding: "48px 0px 20px 0px",
 	};
-	useEffect(() => {}, [date]);
+	useEffect(() => {
+		setInterval(() => setDate(new Date()), 30000);
+	}, []);
+	// useEffect(() => {
+	// 	setInterval(() => {
+	// 		if (new Date().getSeconds() >= 59) {
+	// 			setDate(new Date());
+	// 			console.log("time");
+	// 		}
+	// 	}, 1000);
+	// 	console.log("render");
+	// }, [date]);
 	return (
 		<div style={style}>
 			{date.getMinutes() < 10

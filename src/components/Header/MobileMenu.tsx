@@ -45,13 +45,21 @@ const MobileMenu: React.FC<ComponentProps> = ({
 					onClick={() => {
 						dispatch(removeAllData());
 						dispatch(changeAuth(false));
+
+						setOpenMobileMenu(false);
+
 						localStorage.clear();
 					}}
 				>
 					LogOut
 				</button>
 			) : (
-				<div className="profile__wrapper-btn">
+				<div
+					className="profile__wrapper-btn"
+					onClick={() => {
+						setOpenMobileMenu(false);
+					}}
+				>
 					<Link className="header__btn" to={"/sign-up"}>
 						SignUp
 					</Link>

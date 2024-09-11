@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {Pleer} from "../components/pleer/Pleer";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Pleer } from "../components/pleer/Pleer";
 import globalStyle from "../global.module.scss";
 export const PleerPage = () => {
 	const params = useParams();
@@ -12,14 +12,14 @@ export const PleerPage = () => {
 		setTimeout(() => {
 			sc2.innerText = `kbox(".kinobox_player", {search: {imdb: "${params.id}"}});`;
 			document.body.appendChild(sc2);
-		}, 100);
+		}, 1000);
 
 		return () => {
 			document.body.removeChild(sc);
 
 			setTimeout(() => {
 				document.body.removeChild(sc2);
-			}, 100);
+			}, 1000);
 		};
 	}, []);
 
