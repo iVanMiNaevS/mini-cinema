@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/mini-cinema/static/css/main.30c8ead3.css",
-    "main.js": "/mini-cinema/static/js/main.8162be61.js",
-    "static/media/pngwingcom.png": "/mini-cinema/static/media/pngwingcom.19ac51b972f0fca9735e.png",
-    "index.html": "/mini-cinema/index.html",
-    "main.30c8ead3.css.map": "/mini-cinema/static/css/main.30c8ead3.css.map",
-    "main.8162be61.js.map": "/mini-cinema/static/js/main.8162be61.js.map"
+    "main.css": "/iVanMiNaevS/mini-cinema/static/css/main.1f48a0a9.css",
+    "main.js": "/iVanMiNaevS/mini-cinema/static/js/main.830dfd5b.js",
+    "static/media/eye-close.png": "/iVanMiNaevS/mini-cinema/static/media/eye-close.6f23d33ef3a95692d02c.png",
+    "static/media/eye-open.png": "/iVanMiNaevS/mini-cinema/static/media/eye-open.e2d99441bdc6518b9e75.png",
+    "static/media/no-profile-min.png": "/iVanMiNaevS/mini-cinema/static/media/no-profile-min.b5576598a43a634c0088.png",
+    "static/media/x-button.png": "/iVanMiNaevS/mini-cinema/static/media/x-button.5cc943d27eb3ed685271.png",
+    "static/media/search-icon2.png": "/iVanMiNaevS/mini-cinema/static/media/search-icon2.8237a90549c294ac69d7.png",
+    "index.html": "/iVanMiNaevS/mini-cinema/index.html",
+    "main.1f48a0a9.css.map": "/iVanMiNaevS/mini-cinema/static/css/main.1f48a0a9.css.map",
+    "main.830dfd5b.js.map": "/iVanMiNaevS/mini-cinema/static/js/main.830dfd5b.js.map"
   },
   "entrypoints": [
-    "static/css/main.30c8ead3.css",
-    "static/js/main.8162be61.js"
+    "static/css/main.1f48a0a9.css",
+    "static/js/main.830dfd5b.js"
   ]
 }
