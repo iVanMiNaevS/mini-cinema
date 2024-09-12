@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/mini-cinema/static/css/main.f7f2aaa2.css",
-    "main.js": "/mini-cinema/static/js/main.0dffdd2c.js",
+    "main.js": "/mini-cinema/static/js/main.4ebb91bc.js",
     "static/media/eye-close.png": "/mini-cinema/static/media/eye-close.6f23d33ef3a95692d02c.png",
     "static/media/eye-open.png": "/mini-cinema/static/media/eye-open.e2d99441bdc6518b9e75.png",
     "static/media/no-profile-min.png": "/mini-cinema/static/media/no-profile-min.b5576598a43a634c0088.png",
@@ -9,10 +9,10 @@
     "static/media/search-icon2.png": "/mini-cinema/static/media/search-icon2.8237a90549c294ac69d7.png",
     "index.html": "/mini-cinema/index.html",
     "main.f7f2aaa2.css.map": "/mini-cinema/static/css/main.f7f2aaa2.css.map",
-    "main.0dffdd2c.js.map": "/mini-cinema/static/js/main.0dffdd2c.js.map"
+    "main.4ebb91bc.js.map": "/mini-cinema/static/js/main.4ebb91bc.js.map"
   },
   "entrypoints": [
     "static/css/main.f7f2aaa2.css",
-    "static/js/main.0dffdd2c.js"
+    "static/js/main.4ebb91bc.js"
   ]
 }
